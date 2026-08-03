@@ -2,31 +2,286 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>هدية عيد ميلاد</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>هدية لـ Ansar ❤️</title>
+
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
-background:#ffb6c1;
-font-family:Arial;
+background:linear-gradient(135deg,#ff4e8a,#ffb6c1,#ffd6e7);
+height:100vh;
+overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
-margin:0;
 }
-h1{
-color:white;
-font-size:40px;
+
+#lock{
 text-align:center;
+color:white;
+}
+
+input{
+padding:15px;
+font-size:22px;
+border:none;
+border-radius:12px;
+text-align:center;
+width:220px;
+margin-top:15px;
+}
+
+button{
+padding:15px 35px;
+margin-top:15px;
+font-size:20px;
+border:none;
+border-radius:12px;
+background:#ff0066;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#d60055;
+}
+
+#gift{
+display:none;
+text-align:center;
+color:white;
+padding:20px;
+}
+
+h1{
+font-size:45px;
+margin-bottom:15px;
+animation:pulse 1s infinite;
+}
+
+p{
+font-size:25px;
+margin:15px;
+}
+
+#present{
+font-size:90px;
+cursor:pointer;
+transition:.4s;
+}
+
+#present:hover{
+transform:scale(1.2) rotate(10deg);
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.08);}
+100%{transform:scale(1);}
+}
+
+#message{
+display:none;
+font-size:30px;
+margin-top:20px;
+animation:fade 2s;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
 }
 </style>
 </head>
+
 <body>
 
-<h1>
-🎂<br>
-Happy Birthday<br>
-🌸 كل عام وأنتِ بخير 🌸
-</h1>
+<div id="lock">
+
+<h1>🔐</h1>
+
+<h2>أدخل الكود السري</h2>
+
+<input id="code" type="password" placeholder="****">
+
+<br>
+
+<button onclick="check()">فتح الهدية</button>
+
+<p id="error"></p>
+
+</div>
+
+<div id="gift">
+
+<h1>🎉 Happy Birthday Ansar 🎉</h1>
+
+<p>❤️ هذه الهدية صنعت خصيصًا لك ❤️</p>
+
+<div id="present">🎁</div>
+
+<div id="message">
+
+🎂 كل عام وأنتِ بخير يا Ansar 🌸❤️
+
+<br><br>
+
+أتمنى لكِ سنة مليئة بالسعادة والنجاح والضحكات الجميلة ✨💖
+
+</div>
+
+</div>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function check(){
+
+if(document.getElementById("code").value=="0609"){
+
+document.getElementById("lock").style.display="none";
+
+document.getElementById("gift").style.display="block";
+
+document.getElementById("music").play();
+
+}else{
+
+document.getElementById("error").innerHTML="❌ الكود غير صحيح";
+
+}
+
+}
+
+document.getElementById("present").onclick=function(){
+
+this.innerHTML="💝";
+
+document.getElementById("message").style.display="block";
+
+}// =======================
+// 🎊 مؤثرات الاحتفال
+// =======================
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.innerHTML = "❤️";
+    heart.style.position = "fixed";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = window.innerHeight + "px";
+    heart.style.fontSize = (20 + Math.random() * 25) + "px";
+    heart.style.pointerEvents = "none";
+    heart.style.transition = "all 6s linear";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.style.top = "-100px";
+        heart.style.opacity = "0";
+    }, 100);
+
+    setTimeout(() => heart.remove(), 6500);
+}
+
+setInterval(createHeart, 700);
+
+function createFlower() {
+    const flower = document.createElement("div");
+    flower.innerHTML = "🌸";
+    flower.style.position = "fixed";
+    flower.style.left = Math.random() * window.innerWidth + "px";
+    flower.style.top = "-50px";
+    flower.style.fontSize = (18 + Math.random() * 18) + "px";
+    flower.style.pointerEvents = "none";
+    flower.style.transition = "all 8s linear";
+    document.body.appendChild(flower);
+
+    setTimeout(() => {
+        flower.style.top = window.innerHeight + "px";
+        flower.style.transform = "rotate(720deg)";
+    }, 100);
+
+    setTimeout(() => flower.remove(), 8500);
+}
+
+setInterval(createFlower, 900);
+
+function createBalloon() {
+    const balloon = document.createElement("div");
+    balloon.innerHTML = "🎈";
+    balloon.style.position = "fixed";
+    balloon.style.left = Math.random() * window.innerWidth + "px";
+    balloon.style.bottom = "-60px";
+    balloon.style.fontSize = (25 + Math.random() * 20) + "px";
+    balloon.style.pointerEvents = "none";
+    balloon.style.transition = "all 10s linear";
+    document.body.appendChild(balloon);
+
+    setTimeout(() => {
+        balloon.style.bottom = window.innerHeight + "px";
+    }, 100);
+
+    setTimeout(() => balloon.remove(), 10500);
+}
+
+setInterval(createBalloon, 1500);
+
+function confetti() {
+
+    for(let i=0;i<120;i++){
+
+        let c=document.createElement("div");
+
+        c.style.position="fixed";
+        c.style.left=Math.random()*window.innerWidth+"px";
+        c.style.top="-20px";
+        c.style.width="8px";
+        c.style.height="8px";
+        c.style.background="hsl("+Math.random()*360+",100%,50%)";
+        c.style.pointerEvents="none";
+        c.style.transition="all 4s linear";
+
+        document.body.appendChild(c);
+
+        setTimeout(()=>{
+            c.style.top=window.innerHeight+"px";
+            c.style.transform="rotate(720deg)";
+        },50);
+
+        setTimeout(()=>{
+            c.remove();
+        },4200);
+
+    }
+
+}
+
+// عند فتح الهدية
+document.getElementById("present").onclick=function(){
+
+this.innerHTML="💝";
+
+document.getElementById("message").style.display="block";
+
+confetti();
+
+  }
+</script>
 
 </body>
 </html>
