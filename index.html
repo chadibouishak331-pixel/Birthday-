@@ -151,20 +151,48 @@ pointer-events:none;
 </audio>
 
 <script>
-function check(){
+طfunction check(){
 
-if(document.getElementById("code").value=="0609"){
+    if(document.getElementById("code").value=="0609"){
 
-document.getElementById("lock").style.display="none";
+        document.getElementById("lock").innerHTML=`
+        <h1 id="count">3</h1>
+        <p>استعد للمفاجأة... 🎁</p>
+        `;
 
-document.getElementById("gift").style.display="block";
+        let n=3;
 
-document.getElementById("music").play();
+        let timer=setInterval(function(){
 
-}else{
+            n--;
 
-document.getElementById("error").innerHTML="❌ الكود غير صحيح";
+            if(n>0){
 
+                document.getElementById("count").innerHTML=n;
+
+            }else{
+
+                clearInterval(timer);
+
+                document.getElementById("lock").style.display="none";
+
+                document.getElementById("gift").style.display="block";
+
+                document.getElementById("music").play();
+
+                confetti();
+
+            }
+
+        },1000);
+
+    }else{
+
+        document.getElementById("error").innerHTML="❌ الكود غير صحيح";
+
+    }
+
+}
 }
 
 }
